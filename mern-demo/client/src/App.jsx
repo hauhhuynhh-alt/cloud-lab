@@ -14,7 +14,8 @@ function App() {
   const [editingId, setEditingId] = useState(null);
 
   // Tự động nhận diện URL API cho môi trường Codespaces hoặc Localhost
-  const API_URL = `${window.location.protocol}//${window.location.hostname.replace('-5173', '-5000')}/api/students`;
+ // const API_URL = `${window.location.protocol}//${window.location.hostname.replace('-5173', '-5000')}/api/students`;
+    const API_URL = "http://localhost:5000/api/students";
 
   // 1. Lấy danh sách sinh viên (GET /api/students)
   const fetchStudents = () => {
@@ -225,7 +226,7 @@ function App() {
         </tbody>
       </table>
     </div>
-  );
+  ); 
 }
 
 export default App;
