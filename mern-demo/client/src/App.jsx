@@ -107,7 +107,7 @@ function App() {
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif', maxWidth: '800px', margin: '0 auto' }}>
-      <h2>{editingId ? 'Cập Nhật Thông Tin Sinh Viên' : 'Thêm Sinh Viên Mới'}</h2>
+      <h2>{editingId ? 'Cập Nhật Thông Tin Sinh Viên' : 'MERN Stack Application - Version 2.0'}</h2>
       
       {/* Form nhập dữ liệu */}
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '30px' }}>

@@ -1,0 +1,27 @@
+  version: '3.8'
+
+  services:
+    mern-backend:
+      image: huynhtrunghau/mern-backend:2.0
+      container_name: mern-backend
+      ports:
+        - "5000:5000"
+      environment:
+        - PORT=5000
+        - MONGODB_URI=mongodb+srv://hauhuynhh_db_user:BI3WOnqFUwCPU2Vp@cluster0.5e9dadn.mongodb.net/cloud_lab?retryWrites=true&w=majority
+      networks:
+        - mern-network
+
+    mern-frontend:
+      image: huynhtrunghau/mern-frontend:2.0
+      container_name: mern-frontend
+      ports:
+        - "3000:3000"
+      depends_on:
+        - mern-backend
+      networks:
+        - mern-network
+
+  networks:
+    mern-network:
+      driver: bridge
