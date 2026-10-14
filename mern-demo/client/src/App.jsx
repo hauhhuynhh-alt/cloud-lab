@@ -14,8 +14,9 @@ function App() {
   const [editingId, setEditingId] = useState(null);
 
   // Tự động nhận diện URL API cho môi trường Codespaces hoặc Localhost
- // const API_URL = `${window.location.protocol}//${window.location.hostname.replace('-5173', '-5000')}/api/students`;
-    const API_URL = "http://localhost:5000/api/students";
+     // Gán trực tiếp URL Backend trên Render vào đây
+    const API_URL = "https://mern-backend-239671.onrender.com/api/students";
+    //const API_URL = "http://localhost:5000/api/students";
 
   // 1. Lấy danh sách sinh viên (GET /api/students)
   const fetchStudents = () => {

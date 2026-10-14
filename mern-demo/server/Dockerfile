@@ -1,20 +1,24 @@
-# Câu 32 (Base Image). Khai báo base image Node.js 
+# Base Image cho Client
 FROM node:18-alpine
 
-# Câu 33 (Thư mục làm việc):. Tạo thư mục làm việc trong container
+# Thư mục làm việc
 WORKDIR /app
 
-# Câu 34 (Copy file cấu hình). Sao chép file khai báo thư viện
+# Sao chép package.json và cài đặt thư viện
 COPY package*.json ./
-
-# Câu 35 (Cài phụ thuộc). Cài đặt các phụ thuộc (dependencies)
 RUN npm install
 
-# Câu 36 (Copy mã nguồn & Expose Port):. Sao chép toàn bộ mã nguồn backend vào container
+# Sao chép toàn bộ mã nguồn client
 COPY . .
 
-#  cau 37 Mở cổng port (thường là 5000 cho Node backend)
-EXPOSE 5000
+# KHAI BÁO BIẾN MÔI TRƯỜNG BUILD-TIME CHO VITE
+ARG VITE_API_URL
+ENV VITE_API_URL=$VITE_API_URL
 
-# Câu 37 (Lệnh khởi động):. Lệnh chạy ứng dụng khi container khởi động
-CMD ["npm", "start"]
+# Build ứng dụng tĩnh
+RUN npm run build
+
+# Sử dụng serve để chạy ứng dụng
+RUN npm install -g serve
+EXPOSE 3000
+CMD ["serve", "-s", "dist", "-l", "3000"]
